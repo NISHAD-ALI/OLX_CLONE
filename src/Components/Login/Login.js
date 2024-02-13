@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {signInWithEmailAndPassword} from 'firebase/auth'
-import {auth} from '../../Firebase/config'
+import {auth} from '../../firebase/config'
 import Logo from '../../olx-logo.png';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
@@ -37,6 +37,8 @@ function Login() {
       <div className="loginParentDiv">
         <img width="280px" height="280px" src={Logo}></img>
         <form onSubmit={submitHandler}>
+      { err ? <span style={{color:'red'}}>{err}</span> : ''}
+      <br />
           <label htmlFor="fname">Email</label>
           <br />
           <input
@@ -62,7 +64,6 @@ function Login() {
           <button>Login</button>
         </form>
         <a onClick={()=>navigate('/signup')}>Signup</a>
-        { err ? <span style={{color:'red'}}>{err}</span> : ''}
       </div>
     </div>
   );

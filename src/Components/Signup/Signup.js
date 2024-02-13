@@ -47,8 +47,10 @@ export default function Signup() {
         .then(()=>{
           navigate('/login')
         })
-        console.log("hi");
+        
       })
+    }).catch((err)=>{
+     setErr(err.message)
     })
     
   }
